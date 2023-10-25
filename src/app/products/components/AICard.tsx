@@ -25,7 +25,7 @@ export default function AICard({image,name,slug,description,className,isLocked=t
                     </svg>
                     Members only
                 </p>} 
-                <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
+                <div className="h-48 w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center object-none overflow-hidden">
                     <Image src={image} alt={name} width={192} height={192}/>
                 </div>
                 <div className="text-gray-900 font-bold text-xl mb-2">{name}</div>

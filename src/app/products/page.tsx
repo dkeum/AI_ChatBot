@@ -4,7 +4,10 @@ import AICard from "./components/AICard";
 
 
 export default async function ProductPage() {
-let { data: chatBots , error } = await supabase.from('chatBot').select('*');
+    let { data: chatBots, error } = await supabase
+    .from('chatBot')
+    .select('id,name,slug,description,img_url')
+
 if (error) {
     console.error("Error fetching chatBots:", error);
     return {
