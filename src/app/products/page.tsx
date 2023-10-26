@@ -8,9 +8,10 @@ export default async function ProductPage() {
 
   if (error) {
     console.error("Error fetching chatBots:", error);
-    return {
-      notFound: true, // Handle the error as needed
-    };
+    return (
+      <div> There seems to be an erorr...</div>
+    );
+
   }
   // console.log(chatBots);
 
