@@ -3,7 +3,6 @@ import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 
-//@ts-ignore
 import type { Database } from "@/lib/database.types";
 import { stripe } from "@/stripe/stripe";
 import { SITE_URL } from "@/app/util/SITE_URL";
@@ -24,6 +23,7 @@ export async function GET(request: Request) {
   const { data: profile } = await supabase
     .from("profile")
     .select("stripe_customer_id")
+    //@ts-ignore
     .eq("email", user.user?.email)
     .single();
 
@@ -35,7 +35,7 @@ export async function GET(request: Request) {
   }
 
   const session = await stripe.billingPortal.sessions.create({
-    customer: profile?.stripe_customer_id,
+    customer: profile.stripe_customer_id ?? "",
     return_url: SITE_URL,
   });
 
