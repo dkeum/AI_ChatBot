@@ -13,67 +13,63 @@ interface HeaderProps {
 }
 
 export default async function Header({ children, className }: HeaderProps) {
-
   const cookieStore = cookies();
   const supabase = createServerComponentClient<Database>({
     cookies: () => cookieStore,
   });
   const { data, error } = await supabase.auth.getSession();
-  let { data: profile } = await supabase.from("profile").select("*").eq('email',data.session?.user.email);
-  
+  let { data: profile } = await supabase
+    .from("profile")
+    .select("*")
+    .eq("email", data.session?.user.email);
 
-
-  let hasBilling:boolean;
-  if(profile){
+  let hasBilling: boolean;
+  if (profile) {
     hasBilling = true;
-  }
-  else{
+  } else {
     hasBilling = false;
   }
 
-
   const isUserLoggedIn = data.session?.user.role === "authenticated";
-
-
-
 
   return (
     <div>
       <div
         className={twMerge(
-          "flex flex-row justify-between w-full bg-neutral-900 border-b-4 border-indigo-500 py-10",
+          " h-[135px] w-full bg-black border-b-2 border-indigo-500 ",
           className
         )}
       >
-        <h1 className="text-white mx-5 font-bold ">AI CHAT BOTS</h1>
-        <div className="flex flex-row text-white mx-5 gap-x-5">
-          {isUserLoggedIn ? (
-            <LogoutButton/>
-          ) : (
-            <>
-              <Link href="/create-account">
-                <button className="text-white font-bold mr-5 mt-2">
-                  Sign Up
-                </button>
-              </Link>
+        <div className="flex flex-row justify-between h-[115px] rounded-lg bg-neutral-900 py-2 items-center mt-2 pr-5">
+          <h1 className="text-white mx-5 font-bold ">AI CHAT BOTS</h1>
 
-              <Link href="/login">
-                <button className="bg-white text-black font-bold hover:bg-gray-200  py-2 px-4 rounded-full">
-                  Login
-                </button>
-              </Link>
-            </>
-          )}
+          <div className="flex flex-row text-white mx-5 gap-x-5">
+            {isUserLoggedIn ? (
+              <LogoutButton />
+            ) : (
+              <>
+                <Link href="/create-account">
+                  <button className="text-white font-bold mr-5 mt-2">
+                    Sign Up
+                  </button>
+                </Link>
 
-          {isUserLoggedIn && <BillingButton hasBilling={hasBilling} />}
+                <Link href="/login">
+                  <button className="bg-white text-black font-bold hover:bg-gray-200  py-2 px-4 rounded-full">
+                    Login
+                  </button>
+                </Link>
+              </>
+            )}
 
-          <Link href="/pricing">
-            <button className="bg-white text-black font-bold hover:bg-gray-200  py-2 px-4 rounded-full">
-               Pricing
-            </button>
-          </Link>
+            {isUserLoggedIn && <BillingButton hasBilling={hasBilling} />}
 
-
+            <Link href="/pricing">
+              <button className="bg-white text-black font-bold hover:bg-gray-200  py-2 px-4 rounded-full">
+                Pricing
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
 

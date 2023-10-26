@@ -10,11 +10,12 @@ interface AICardProps{
     slug:string;
     description: string;
     className ?: string;
+    id: number;
     isLocked ?: boolean;
 }
 
 
-export default function AICard({image,name,slug,description,className,isLocked=true}: AICardProps){
+export default function AICard({image,name,slug,description,className,id,isLocked=true}: AICardProps){
     return(
         <div className={twMerge("max-w-sm w-[250px] lg:max-w-full lg:flex ", className)}>
             <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal ">
@@ -32,7 +33,7 @@ export default function AICard({image,name,slug,description,className,isLocked=t
                 <p className="text-gray-700 text-base">{description}</p>
                 </div>
                 <div className="flex items-center justify-center">
-                   {!isLocked && <Link href={`/products/${slug}`} >
+                   {!isLocked && <Link href={`/products/${slug}?Id=${id}`} >
                         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full ">Chat with me</button>
                     </Link>
                     }
