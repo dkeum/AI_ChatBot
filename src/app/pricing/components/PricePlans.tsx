@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { pricesProps, priceProps } from "../page";
-import { SITE_URL } from "@/app/util/page";
+import { SITE_URL } from "@/app/util/SITE_URL";
 import { loadStripe } from "@stripe/stripe-js";
 
 interface PricePlansProps {

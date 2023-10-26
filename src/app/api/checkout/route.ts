@@ -1,4 +1,4 @@
-import { SITE_URL } from "@/app/util/page"
+import { SITE_URL } from "@/app/util/SITE_URL"
 import { stripe } from "@/stripe/stripe"
 
 // export async function POST(

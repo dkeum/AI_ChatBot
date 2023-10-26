@@ -1,6 +1,6 @@
 "use client";
 
-import { SITE_URL } from "@/app/util/page";
+import { SITE_URL } from "@/app/util/SITE_URL";
 
 interface BillingButtonProps {
   hasBilling: boolean;

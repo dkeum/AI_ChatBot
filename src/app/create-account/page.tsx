@@ -3,7 +3,7 @@
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { SITE_URL } from '../util/page';
+import { SITE_URL } from '../util/SITE_URL';
 
 const CreateAccountPage = () =>{
 

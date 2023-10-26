@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 //@ts-ignore
 import type { Database } from "@/lib/database.types";
 import { stripe } from "@/stripe/stripe";
-import { SITE_URL } from "@/app/util/page";
+import { SITE_URL } from "@/app/util/SITE_URL";
 
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
