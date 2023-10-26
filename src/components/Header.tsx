@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import Link from "next/link";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-//@ts-ignore
+
 import type { Database } from "@/lib/database.types";
 import { cookies } from "next/headers";
 import LogoutButton from "./LogoutButton";
@@ -21,6 +21,7 @@ export default async function Header({ children, className }: HeaderProps) {
   let { data: profile } = await supabase
     .from("profile")
     .select("*")
+    //@ts-ignore
     .eq("email", data.session?.user.email);
 
   let hasBilling: boolean;
