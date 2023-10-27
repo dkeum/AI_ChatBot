@@ -13,7 +13,9 @@ export default async function ProductPage() {
     );
 
   }
-  // console.log(chatBots);
+  console.log("This is the product page information below")
+  console.log(chatBots);
+  console.log(error)
 
   return (
     <div className="bg-black h-screen w-full flex flex-col justify-center items-center align-middle ">
