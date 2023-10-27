@@ -32,10 +32,10 @@ export default function AIChatbot({ params }: { params: { slug: string } }) {
 
           console.log("this is the chatBot_profile")
           console.log(chatBot_profile);
-          setName(chatBot_profile.name); 
-          setImage(chatBot_profile.img_url);
-          setDescription(chatBot_profile.description)
-          setCategory(chatBot_profile.category);
+          setName(chatBot_profile!.name); 
+          setImage(chatBot_profile!.img_url);
+          setDescription(chatBot_profile!.description)
+          setCategory(chatBot_profile!.category);
 
         const { data: chatBot_content, error } = await supabase
           .from("chatBot_content")
